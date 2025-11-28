@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shop/providers/auth.dart';
 
 class ProdItem {
   final int productId;
@@ -29,9 +28,20 @@ class OrderItem {
         id: e["id"],
         orderNumber: e["order_number"],
         totalAmount: e["total_amount"],
-        items: e["items"]);
+        items: toProdItemList(e["items"]));
 
     return item;
+  }
+
+  static List<ProdItem> toProdItemList(dynamic e) {
+    final items = e
+        .map<ProdItem>((elem) => ProdItem(
+            productId: elem["product_id"],
+            quantity: elem["quantity"],
+            price: elem["price"]))
+        .toList();
+
+    return items;
   }
 }
 
@@ -42,6 +52,8 @@ class OrderProvider extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
   bool get isInitialized => _initialized;
+
+  List<OrderItem> get getItems => [...items];
 
   void fetchAllProduct() async {
     if (_initialized) return;

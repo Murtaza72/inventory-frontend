@@ -38,8 +38,8 @@ class MainDrawer extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.security),
-            title: Text("Auth"),
+            leading: Icon(Icons.exit_to_app),
+            title: Text("Logout"),
             onTap: () => Navigator.of(context)
                 .pushReplacementNamed(AuthTabScreen.routeName),
           ),

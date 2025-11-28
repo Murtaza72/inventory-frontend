@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,6 +45,8 @@ class ProductProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get isInitialized => _initialized;
 
+  List<ProductItem> get getItems => [...items];
+
   void fetchAllProduct() async {
     if (_initialized) return;
 
@@ -65,5 +68,17 @@ class ProductProvider extends ChangeNotifier {
 
   int get count {
     return items.length;
+  }
+
+  void addProduct(String name, String sku, double price, int stock) {
+    items.add(ProductItem(
+        id: Random(42).nextInt(100),
+        name: name,
+        sku: sku,
+        price: price,
+        stock: stock,
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now()));
+    notifyListeners();
   }
 }
