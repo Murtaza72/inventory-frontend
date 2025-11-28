@@ -1,16 +1,21 @@
-# inventory_app
+# Flutter Frontend for Inventory Management
 
-A new Flutter project.
+## Setup Instruction
 
-## Getting Started
+1. Clone this repo to your local machine, ensure the flutter is installed and configured properly. Refer [here](https://flutter.dev/).
+2. `flutter pub get`
+3. `flutter build apk --dart-define=API_URL=IP_ADDR:3000`
+4. `IP_ADDR` is the localhost ip addr of your machine and can be found on windows by running `ipconfig` in `cmd`
 
-This project is a starting point for a Flutter application.
+The apk that I have provided is the release build, but it might not work as intended because my local ip was use while building the apk.
 
-A few resources to get you started if this is your first Flutter project:
+## Comments
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+I have tried implementing the frontend to the best of my knowledge and then some, but due to the time constraints and difficulties with the shared_prefrences library, I was not able to completely integrate the frontend with the backend.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Therefore these things may not work or reflect onto the database:
+
+1. Adding or editing the product
+2. Adding the order
+3. Validation errors generated when performing above actions
+4. User Authentication
