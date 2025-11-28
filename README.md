@@ -4,7 +4,7 @@
 
 1. Clone this repo to your local machine, ensure the flutter is installed and configured properly. Refer [here](https://flutter.dev/).
 2. `flutter pub get`
-3. `flutter build apk --dart-define=API_URL=IP_ADDR:3000`
+3. `flutter build apk --dart-define=API_URL=http://IP_ADDR:3000`
 4. `IP_ADDR` is the localhost ip addr of your machine and can be found on windows by running `ipconfig` in `cmd`
 
 The apk that I have provided is the release build, but it might not work as intended because my local ip was use while building the apk.
