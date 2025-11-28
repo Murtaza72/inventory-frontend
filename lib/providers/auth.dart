@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../config.dart';
+
 class AuthProvider extends ChangeNotifier {
   String _token = '';
   String get token => _token;
@@ -18,7 +20,7 @@ class AuthProvider extends ChangeNotifier {
     _setLoading(true);
 
     try {
-      final url = Uri.parse('http://10.0.2.2:3000/login');
+      final url = Uri.parse('${AppConfig.apiBaseUrl}/login');
       final response = await http.post(url, body: {
         'email': email,
         'password': password,

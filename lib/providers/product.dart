@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../config.dart';
+
 class ProductItem {
   final int id;
   final String name;
@@ -53,7 +55,7 @@ class ProductProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    final url = Uri.parse('http://10.0.2.2:3000/products/all');
+    final url = Uri.parse('${AppConfig.apiBaseUrl}/products/all');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

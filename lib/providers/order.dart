@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../config.dart';
+
 class ProdItem {
   final int productId;
   final int quantity;
@@ -61,7 +63,7 @@ class OrderProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    final url = Uri.parse('http://10.0.2.2:3000/orders');
+    final url = Uri.parse('${AppConfig.apiBaseUrl}/orders');
     final response = await http.get(
       url,
       headers: {'Authorization': 'Bearer '},
